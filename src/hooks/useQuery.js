@@ -19,7 +19,7 @@ export default function useQuery(queryFn, deps = []) {
       .then((data) => setState({ data, loading: false }))
       .catch((error) => setState({ error, loading: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...deps, setState]);
+  }, deps);
 
   return state;
 }
