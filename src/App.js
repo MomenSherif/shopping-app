@@ -1,17 +1,19 @@
-import { Container } from '@material-ui/core';
 import { Switch, Route } from 'react-router-dom';
 
+import Header from './components/Header';
+import Layout from './components/Layout/Layout';
 import Home from './Views/Home';
 
 function App() {
   return (
     <div className="App">
-      <Container>
+      <Header />
+      <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="*">Not Found</Route>
         </Switch>
-      </Container>
+      </Layout>
     </div>
   );
 }

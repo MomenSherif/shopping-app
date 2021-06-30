@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 30,
     backgroundClip: 'padding-box',
 
-    '& > a': {
+    '& > *': {
       display: 'block',
       marginBottom: 30,
     },

@@ -1,13 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {
+  ThemeProvider,
+  createMuiTheme,
+  responsiveFontSizes,
+} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const theme = createMuiTheme();
+let theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#2D88FF',
+    },
+    secondary: {
+      main: '#DB2777',
+    },
+    background: {
+      paper: '#242526',
+      default: '#18191A',
+    },
+  },
+});
+
+theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
   <React.StrictMode>

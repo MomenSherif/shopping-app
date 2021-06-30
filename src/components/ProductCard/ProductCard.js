@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,8 +11,9 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import { formatPrice } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  link: {
     textDecoration: 'none',
+    color: 'currentColor',
   },
   image: {
     height: 0,
@@ -29,26 +31,23 @@ export default function ProductCard({
 }) {
   const classes = useStyles();
   return (
-    <Link to={`/products/${id}`} className={classes.root}>
-      <Card>
-        <CardHeader title={title} subheader={formatPrice(price)} />
-        <CardMedia
-          // component="img"
-          image={image}
-          title={title}
-          className={classes.image}
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button variant="contained" disableElevation color="primary">
-            Add to cart
-          </Button>
-        </CardActions>
-      </Card>
-    </Link>
+    <Card>
+      <CardActionArea>
+        <Link to={`/products/${id}`} className={classes.link}>
+          <CardHeader title={title} subheader={formatPrice(price)} />
+          <CardMedia image={image} title={title} className={classes.image} />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {description}
+            </Typography>
+          </CardContent>
+        </Link>
+      </CardActionArea>
+      <CardActions>
+        <Button variant="contained" disableElevation color="primary">
+          Add to cart
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
