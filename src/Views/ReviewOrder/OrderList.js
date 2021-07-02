@@ -40,7 +40,7 @@ function OrderList({ products }) {
             secondary={formatPrice(product.price)}
           />
           <ListItemSecondaryAction className={classes.price}>
-            {product.price * product.count}
+            {(product.price * product.count).toFixed(2)}
             <AttachMoneyIcon />
           </ListItemSecondaryAction>
         </ListItem>
