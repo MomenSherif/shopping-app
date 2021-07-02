@@ -7,6 +7,8 @@ import {
   responsiveFontSizes,
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { SnackbarProvider } from 'notistack';
+import Slide from '@material-ui/core/Slide';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -34,10 +36,19 @@ ReactDOM.render(
   // <React.StrictMode>
   <Router>
     <ThemeProvider theme={theme}>
-      <CartProvider initialValue={{}}>
-        <CssBaseline />
-        <App />
-      </CartProvider>
+      <SnackbarProvider
+        maxSnack={5}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        TransitionComponent={Slide}
+      >
+        <CartProvider initialValue={{}}>
+          <CssBaseline />
+          <App />
+        </CartProvider>
+      </SnackbarProvider>
     </ThemeProvider>
   </Router>,
   // </React.StrictMode>,

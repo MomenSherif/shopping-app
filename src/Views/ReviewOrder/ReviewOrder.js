@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+export default function ReviewOrder() {
   const classes = useStyles();
   return (
     <>

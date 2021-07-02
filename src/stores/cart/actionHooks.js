@@ -28,6 +28,11 @@ export function useRemoveFromCart(productId) {
   };
 }
 
+export function useResetCart() {
+  const [_, forceCartState] = useSetCart();
+  return () => forceCartState({});
+}
+
 function productCountChangeBuilder(action) {
   return function useChangeProductCount(productId) {
     const [setCart] = useSetCart();
