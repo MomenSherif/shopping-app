@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import Home from './Views/Home';
 import ReviewOrder from './Views/ReviewOrder';
 import SubmitOrder from './Views/SubmitOrder';
+import ProductDetails from './Views/ProductDetails';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/review-order" component={ReviewOrder} />
+          <Route exact path="/products/:id" component={ProductDetails} />
+          <Route exact path="/submit-order" component={SubmitOrder} />
           <Route exact path="/submit-order" component={SubmitOrder} />
           <Route path="*">Not Found</Route>
         </Switch>
