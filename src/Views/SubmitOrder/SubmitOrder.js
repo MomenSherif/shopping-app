@@ -42,7 +42,6 @@ function SubmitOrder() {
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} className={classes.root}>
       <TextField
-        variant="outlined"
         label="Address"
         fullWidth
         error={!!errors.address}
@@ -53,7 +52,6 @@ function SubmitOrder() {
         {...register('address', { required: 'Address is Required!' })}
       />
       <TextField
-        variant="outlined"
         label="phone"
         fullWidth
         error={!!errors.phone}
@@ -71,7 +69,6 @@ function SubmitOrder() {
         })}
       />
       <TextField
-        variant="outlined"
         label="Email"
         type="email"
         fullWidth

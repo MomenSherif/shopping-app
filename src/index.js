@@ -28,6 +28,11 @@ let theme = createMuiTheme({
       default: '#18191A',
     },
   },
+  props: {
+    MuiTextField: {
+      variant: 'outlined',
+    },
+  },
 });
 
 theme = responsiveFontSizes(theme);
