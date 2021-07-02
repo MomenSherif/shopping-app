@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import useComplexState, {
   usePersistanceComplexState,
 } from '../hooks/useComplexState';
@@ -16,9 +16,13 @@ export default function makeStore(name, { persistance = false } = {}) {
     const stateHook = persistance
       ? usePersistanceComplexState
       : useComplexState;
-    const [state, setState] = stateHook(initialValue, name);
+    const [state, setState, forceState] = stateHook(initialValue, name);
+    const dispatchers = useMemo(
+      () => [setState, forceState],
+      [forceState, setState],
+    );
     return (
-      <DispatchContext.Provider value={setState}>
+      <DispatchContext.Provider value={dispatchers}>
         <ValueContext.Provider value={state}>{children}</ValueContext.Provider>
       </DispatchContext.Provider>
     );

@@ -31,16 +31,16 @@ let theme = createMuiTheme({
 theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={theme}>
-        <CartProvider initialValue={{}}>
-          <CssBaseline />
-          <App />
-        </CartProvider>
-      </ThemeProvider>
-    </Router>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Router>
+    <ThemeProvider theme={theme}>
+      <CartProvider initialValue={{}}>
+        <CssBaseline />
+        <App />
+      </CartProvider>
+    </ThemeProvider>
+  </Router>,
+  // </React.StrictMode>,
   document.getElementById('root'),
 );
 
