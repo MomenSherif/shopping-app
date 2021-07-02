@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  footer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: theme.spacing(2),
+  },
 }));
 
 function OrderList({ products }) {
@@ -31,22 +39,35 @@ function OrderList({ products }) {
   );
 
   return (
-    <List className={classes.root}>
-      {products.map((product) => (
-        <ListItem key={product.id} component={Paper} elevation={3}>
-          <ListItemIcon>Q: {product.count}</ListItemIcon>
-          <ListItemText
-            primary={product.title}
-            secondary={formatPrice(product.price)}
-          />
-          <ListItemSecondaryAction className={classes.price}>
-            {(product.price * product.count).toFixed(2)}
-            <AttachMoneyIcon />
-          </ListItemSecondaryAction>
-        </ListItem>
-      ))}
-      <Typography variant="h4">Total: {formatPrice(totalPrice)}</Typography>
-    </List>
+    <>
+      <List className={classes.root}>
+        {products.map((product) => (
+          <ListItem key={product.id} component={Paper} elevation={3}>
+            <ListItemIcon>Q: {product.count}</ListItemIcon>
+            <ListItemText
+              primary={product.title}
+              secondary={formatPrice(product.price)}
+            />
+            <ListItemSecondaryAction className={classes.price}>
+              {(product.price * product.count).toFixed(2)}
+              <AttachMoneyIcon />
+            </ListItemSecondaryAction>
+          </ListItem>
+        ))}
+      </List>
+      <div className={classes.footer}>
+        <Typography variant="h4">Total: {formatPrice(totalPrice)}</Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          component={Link}
+          to="/submit-order"
+        >
+          Order Now
+        </Button>
+      </div>
+    </>
   );
 }
 
