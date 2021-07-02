@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(4),
     height: theme.spacing(4),
     color: theme.palette.primary.dark,
-    backgroundColor: theme.palette.text.primary,
+    backgroundColor: '#fff',
     marginLeft: theme.spacing(3),
   },
 }));
