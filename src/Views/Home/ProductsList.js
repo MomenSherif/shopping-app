@@ -35,7 +35,7 @@ export default function ProductsList({ products }) {
       columnClassName={classes.column}
     >
       {products.map((product) => (
-        <ProductCard key={product.id} {...product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </Masonry>
   );

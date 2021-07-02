@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { formatPrice } from '../../utils';
+import { useAddToCart } from '../../stores/cart';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -21,20 +22,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProductCard({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-}) {
+export default function ProductCard({ product }) {
+  const { id, title, price, description, category, image } = product;
+
   const classes = useStyles();
+  const addToCart = useAddToCart(product);
+
   return (
     <Card>
       <CardActionArea>
         <Link to={`/products/${id}`} className={classes.link}>
-          <CardHeader title={title} subheader={formatPrice(price)} />
+          <CardHeader
+            title={title}
+            subheader={category}
+            action={
+              <Typography variant="subtitle1">{formatPrice(price)}</Typography>
+            }
+          />
           <CardMedia image={image} title={title} className={classes.image} />
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -44,7 +48,12 @@ export default function ProductCard({
         </Link>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" disableElevation color="primary">
+        <Button
+          variant="contained"
+          disableElevation
+          color="primary"
+          onClick={addToCart}
+        >
           Add to cart
         </Button>
       </CardActions>

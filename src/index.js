@@ -10,6 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CartProvider } from './stores/cart';
 
 let theme = createMuiTheme({
   palette: {
@@ -33,8 +34,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
+        <CartProvider initialValue={{}}>
+          <CssBaseline />
+          <App />
+        </CartProvider>
       </ThemeProvider>
     </Router>
   </React.StrictMode>,
