@@ -8,5 +8,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Layout({ children }) {
   const classes = useStyles();
-  return <Container className={classes.root}>{children}</Container>;
+  return (
+    <Container component="main" className={classes.root}>
+      {children}
+    </Container>
+  );
 }

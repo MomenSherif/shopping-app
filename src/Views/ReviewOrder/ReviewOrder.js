@@ -1,10 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import ProductsList from './ProductsList';
-import Spinner from '../../components/Spinner';
-import { useQuery } from '../../hooks';
-import { getProducts } from '../../api/products';
+import OrderList from './OrderList';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -13,15 +10,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home() {
-  const { loading, data: products } = useQuery(getProducts);
   const classes = useStyles();
-
   return (
     <>
       <Typography variant="h2" component="h1" className={classes.title}>
-        Available Products
+        Review Order
       </Typography>
-      {loading ? <Spinner /> : <ProductsList products={products} />}
+      <OrderList />
     </>
   );
 }

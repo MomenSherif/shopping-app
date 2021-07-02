@@ -38,15 +38,20 @@ export default function CartMenu() {
           <ReviewOrder disabled={isEmpty(cart)} onClick={close} />
         </>
       )}
-    />
+    ></Menu>
   );
 }
 
 const ReviewOrder = withStyles((theme) => ({
   root: {
-    display: 'block',
-    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.primary.main,
+
+    '&:hover': {
+      backgroundColor: theme.palette.primary.dark,
+    },
   },
 }))((props) => (
   <MenuItem component={Link} to="/review-order" {...props}>
