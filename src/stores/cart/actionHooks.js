@@ -1,7 +1,10 @@
+import { useSnackbar } from 'notistack';
+
 import { useSetCart } from './cart';
 
 export function useAddToCart(product) {
   const [setCart] = useSetCart();
+  const { enqueueSnackbar } = useSnackbar();
   return () => {
     setCart((cart) => {
       const productCountInCart = cart[product.id]
@@ -14,6 +17,10 @@ export function useAddToCart(product) {
           count: productCountInCart,
         },
       };
+    });
+    enqueueSnackbar('Added to cart', {
+      variant: 'success',
+      autoHideDuration: 1000,
     });
   };
 }
