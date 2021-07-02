@@ -30,12 +30,15 @@ export default function CartMenu() {
           </IconButton>
         </Badge>
       )}
-    >
-      {Object.values(cart).map((product) => (
-        <CartMenuItem key={product.id} product={product} />
-      ))}
-      <ReviewOrder disabled={isEmpty(cart)} />
-    </Menu>
+      renderMenu={({ close }) => (
+        <>
+          {Object.values(cart).map((product) => (
+            <CartMenuItem key={product.id} product={product} />
+          ))}
+          <ReviewOrder disabled={isEmpty(cart)} onClick={close} />
+        </>
+      )}
+    />
   );
 }
 
